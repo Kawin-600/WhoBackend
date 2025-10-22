@@ -1,0 +1,31 @@
+1. composer create-project --prefer-dist laravel/laravel="7.*" WhoBackend
+2. php artisan make:model Student
+3. composer require laravel/sanctum
+4. php artisan migrate
+5.composer require laravel/ui:^2.4
+6.php artisan ui bootstrap --auth
+7.npm install && npm run dev
+
+database
+1. php artisan make:migration create_students_table
+2. ใน database/migrations/xxxx_xx_xx_create_students_table.php เพิ่มคำสั่ง
+```public function up(): void
+    {
+        Schema::create('students', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id')->unique(); // 1:1 กับ users
+            $table->string('name');
+            $table->text('address')->nullable();
+            $table->string('tel', 20)->nullable();
+            $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('students');
+    }```
+
+3. Test
