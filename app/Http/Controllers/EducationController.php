@@ -58,4 +58,15 @@ class EducationController extends Controller
         $education->update($data);
         return response()->json($education);
     }
+
+    // 🗑 ลบข้อมูลการศึกษา
+    public function destroy($id)
+    {
+        $education = Education::findOrFail($id);
+        $education->delete();
+
+        return response()->json([
+            'message' => 'Education record deleted successfully'
+        ]);
+    }
 }

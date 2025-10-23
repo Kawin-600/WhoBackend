@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/student', [StudentController::class, 'show']);
     Route::post('/student', [StudentController::class, 'store']);
     Route::put('/student/{id}', [StudentController::class, 'update']);
+    Route::delete('/student/{id}', [StudentController::class, 'destroy']);
 });
 
 
@@ -37,4 +38,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/education', [EducationController::class, 'show']);
     Route::post('/education', [EducationController::class, 'store']);
     Route::put('/education/{id}', [EducationController::class, 'update']);
+    Route::delete('/education/{id}', [EducationController::class, 'destroy']);
 });
